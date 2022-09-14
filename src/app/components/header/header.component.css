@@ -1,0 +1,9 @@
+.name{
+    color: brown;
+    font-size: larger;
+}
+.logout{
+    font-size: large;
+    color: black;
+    cursor: pointer;
+}

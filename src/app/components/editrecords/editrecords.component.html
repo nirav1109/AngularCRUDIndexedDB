@@ -1,0 +1,60 @@
+<div class="container d-flex justify-content-center">
+    <form class="example-form " [formGroup]="userForm" *ngIf="userForm">
+        <h3>Edit </h3>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Ex. Michel123" formControlName="name" id="name" name="name"
+                type="text" />
+            <mat-error *ngIf="userForm.get('name').hasError('required')">Name is required</mat-error>
+            <mat-error *ngIf="userForm.get('name').hasError('pattern')">Please enter valid Name
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>UserName</mat-label>
+            <input matInput placeholder="Ex. Michel123" formControlName="username" id="username" name="username"
+                type="text"/>
+            <mat-error *ngIf="userForm.get('username').hasError('required')">UserName is required</mat-error>
+            <mat-error *ngIf="userForm.get('username').hasError('pattern')">Please enter valid UserName
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput placeholder="Ex. +91 9876543210" formControlName="phone" id="phone" name="phone"
+                type="text" />
+            <mat-error *ngIf="userForm.get('phone').hasError('pattern')">Please enter valid Phone
+            </mat-error>
+        </mat-form-field>
+       
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>ZIP CODE</mat-label>
+            <input matInput placeholder="Ex. 382350" formControlName="zipcode" id="zipcode" name="zipcode"
+                type="zipcode" />
+            <mat-error *ngIf="userForm.get('zipcode').hasError('required')">zipcode is required</mat-error>
+            <mat-error *ngIf="userForm.get('zipcode').hasError('pattern')">Please enter valid zipcode</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="Password" formControlName="password" name="password" type="password"
+                autocomplete="new-password" #passwordRef compare-password="txtConfirmPassword" />
+            <button matSuffix mat-button class="btn btn-text" type="button" (click)="
+            passwordRef.type === 'text'
+              ? (passwordRef.type = 'password')
+              : (passwordRef.type = 'text')
+          ">
+                <mat-icon matSuffix *ngIf="passwordRef.type === 'password'">visibility</mat-icon>
+                <mat-icon matSuffix *ngIf="passwordRef.type === 'text'">visibility_off</mat-icon>
+            </button>
+            <mat-error *ngIf="userForm.get('password').hasError('pattern')">
+                Password must have 1 digit, 1 capital, 1 small and 1 special character
+            </mat-error>
+            <mat-error *ngIf="userForm.get('password').hasError('required')">Password is required</mat-error>
+        </mat-form-field>
+       
+        <button (click)="formSubmit()" mat-button class="btn btn-primary mt-2">
+            Save
+        </button>&nbsp;
+        <button class="btn btn-danger mt-2" (click)="closeDialog()">Cancel</button>
+    </form>
+</div>
